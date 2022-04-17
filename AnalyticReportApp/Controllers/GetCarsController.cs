@@ -19,6 +19,9 @@ namespace ArturBhasker.AnalitycReportBeeLine.Controllers
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
+        /// <summary>
+        /// ѕолучить машины по параметру бренда
+        /// </summary>
         [HttpGet(Name = "GetCars")]
         public async Task<IActionResult> GetCars(
             [FromQuery] string brand,
