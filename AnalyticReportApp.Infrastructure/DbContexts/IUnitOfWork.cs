@@ -1,4 +1,4 @@
-﻿namespace AnalyticReportApp.Infrastructure.DbContexts
+﻿namespace ArturBhasker.Infrastructure.UnitTests.DbContexts
 {
     public interface IUnitOfWork
     {

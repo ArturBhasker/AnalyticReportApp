@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace AnalyticReportApp.Infrastructure
+﻿namespace ArturBhasker.Infrastructure.UnitTests.Entitities
 {
     public partial class Property
     {

@@ -1,4 +1,4 @@
-﻿namespace AnalyticReportApp.RazorModels
+﻿namespace ArturBhasker.AnalitycReportBeeLine.RazorModels.GetCarsRazorModel
 {
     /// <summary>
     /// Модель razor для записи о машине

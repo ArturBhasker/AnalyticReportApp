@@ -1,9 +1,9 @@
-﻿using AnalyticReportApp.Infrastructure.DbContexts;
-using AnalyticReportApp.Infrastructure.Repositories;
-using Microsoft.Extensions.DependencyInjection;
+﻿using ArturBhasker.Infrastructure.UnitTests.DbContexts;
+using ArturBhasker.Infrastructure.UnitTests.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace AnalyticReportApp.Infrastructure.Extensions
+namespace ArturBhasker.Infrastructure.UnitTests.Extensions
 {
     public static class ServiceCollectionExtensions
     {

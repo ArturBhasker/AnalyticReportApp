@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ArturBhasker.Infrastructure.UnitTests.Entitities;
+using Microsoft.EntityFrameworkCore;
+using Task = ArturBhasker.Infrastructure.UnitTests.Entitities.Task;
 
-namespace AnalyticReportApp.Infrastructure.DbContexts
+namespace ArturBhasker.Infrastructure.UnitTests.DbContexts
 {
     internal partial class C1NWindContext : DbContext
     {

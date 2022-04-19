@@ -7,12 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalyticReportApp", "Analyt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalyticReportApp.Infrastructure", "AnalyticReportApp.Infrastructure\AnalyticReportApp.Infrastructure.csproj", "{D098AAC7-FE87-40D1-BB9B-903B9F171183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticReport.UnitTests", "AnalyticReport.UnitTests\AnalyticReport.UnitTests.csproj", "{310DF563-B28D-4DCA-8A5F-61870F3EC337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalyticReport.UnitTests", "AnalyticReport.UnitTests\AnalyticReport.UnitTests.csproj", "{310DF563-B28D-4DCA-8A5F-61870F3EC337}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C1ED8C0E-1757-46FD-AF7E-43BF137E3CCE}"
 	ProjectSection(SolutionItems) = preProject
 		README.txt = README.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticReport.ClientService", "AnalyticReport.ClientService\AnalyticReport.ClientService.csproj", "{1E5F2E73-62E1-40C7-AB83-B674C9483E9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{310DF563-B28D-4DCA-8A5F-61870F3EC337}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{310DF563-B28D-4DCA-8A5F-61870F3EC337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{310DF563-B28D-4DCA-8A5F-61870F3EC337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5F2E73-62E1-40C7-AB83-B674C9483E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5F2E73-62E1-40C7-AB83-B674C9483E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5F2E73-62E1-40C7-AB83-B674C9483E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5F2E73-62E1-40C7-AB83-B674C9483E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace AnalyticReportApp.RazorModels
+﻿namespace ArturBhasker.AnalitycReportBeeLine.RazorModels.GetCarsRazorModel
 {
     /// <summary>
     /// Модель заголовка для таблцы с машинами
@@ -8,7 +8,7 @@
         /// <summary>
         /// Количество машин
         /// </summary>
-        public int CarsCount{ get; }
+        public int CarsCount { get; }
 
         /// <summary>
         /// Количество машин заданной марки

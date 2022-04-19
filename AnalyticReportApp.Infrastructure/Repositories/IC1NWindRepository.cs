@@ -1,4 +1,6 @@
-﻿namespace AnalyticReportApp.Infrastructure.Repositories
+﻿using ArturBhasker.Infrastructure.UnitTests.Entitities;
+
+namespace ArturBhasker.Infrastructure.UnitTests.Repositories
 {
     public interface IC1NWindRepository
     {

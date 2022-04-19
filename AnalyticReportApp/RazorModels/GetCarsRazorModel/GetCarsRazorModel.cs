@@ -1,4 +1,4 @@
-﻿namespace AnalyticReportApp.RazorModels
+﻿namespace ArturBhasker.AnalitycReportBeeLine.RazorModels.GetCarsRazorModel
 {
     public class GetCarsRazorModel
     {

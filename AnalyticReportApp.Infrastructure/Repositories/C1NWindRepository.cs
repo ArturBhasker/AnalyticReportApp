@@ -1,12 +1,8 @@
-﻿using AnalyticReportApp.Infrastructure.DbContexts;
+﻿using ArturBhasker.Infrastructure.UnitTests.DbContexts;
+using ArturBhasker.Infrastructure.UnitTests.Entitities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AnalyticReportApp.Infrastructure.Repositories
+namespace ArturBhasker.Infrastructure.UnitTests.Repositories
 {
     internal class C1NWindRepository : IC1NWindRepository
     {

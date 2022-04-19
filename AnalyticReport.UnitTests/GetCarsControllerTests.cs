@@ -1,15 +1,14 @@
-using AnalyticReportApp.Infrastructure;
-using AnalyticReportApp.Infrastructure.Repositories;
+using System.Linq;
+using System.Threading;
 using ArturBhasker.AnalitycReportBeeLine.Controllers;
+using ArturBhasker.Infrastructure.UnitTests.Entitities;
+using ArturBhasker.Infrastructure.UnitTests.Repositories;
 using AutoFixture;
 using Microsoft.Extensions.Logging;
 using Moq;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace AnalyticReport.UnitTests
+namespace ArturBhasker.AnalitycReportBeeLine.UnitTests
 {
     public class GetCarsControllerTests
     {
@@ -30,7 +29,7 @@ namespace AnalyticReport.UnitTests
                 repository: repositoryMock.Object);
 
             //Act
-            var cars = await controller.GetCars(
+            var cars = await controller.GetCarsAsync(
                 fixture.Create<string>(),
                 CancellationToken.None);
 

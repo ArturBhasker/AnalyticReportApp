@@ -1,39 +1,48 @@
-using AnalyticReportApp.Infrastructure.Extensions;
+using ArturBhasker.AnalitycReportBeeLine.ClientService;
+using ArturBhasker.AnalitycReportBeeLine.Extensions;
+using Mono.Options;
+using Polly;
 
-var builderConfiguration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-var configuration = builderConfiguration.Build();
-
-
-var connectionString = configuration["ConnectionString"] ?? throw new ArgumentNullException("connectionString");
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-builder.Services.AddMvc();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContexts(connectionString);
-builder.Services.AddRepositories();
-
+// Запускаем Web приложение
+var builder = WebApplication.CreateBuilder();
+builder.AddWebApplicationInfrastructure();
 
 var app = builder.Build();
+app.AddWebApplicationSettings();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+Task.Run(() => app.RunAsync());
 
-app.UseHttpsRedirection();
+//Парсим входные параметры приложения
 
-app.UseAuthorization();
+//Значение выходных параметров по умолчанию
+string brand = "BMW";
+string outputHtml = "MyHtml.html";
 
-app.MapControllers();
+var p = new OptionSet() {
+    { "m|mark=", "the name of car brand.",
+        v => brand = v },
+    { "o|outputFile=",
+        "output html name",
+        v => outputHtml = v },
+};
 
-app.Run();
+p.Parse(args);
+
+//Пытаемся получить uri веб сервера
+var polly = Policy
+    .Handle<InvalidOperationException>()
+    .WaitAndRetry(5, _ => TimeSpan.FromSeconds(1));
+
+var baseUrl = polly
+    .Execute(() => app.Urls.First());
+
+//Создаём сервис клиента
+var clientService = new ClientService(
+    baseUrl,
+    args);
+
+//Получаемы итоговый html
+var html = await clientService.GetCarsFromServer(brand);
+
+//Записываем его в файл
+File.WriteAllText(outputHtml, html);

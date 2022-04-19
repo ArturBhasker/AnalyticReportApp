@@ -1,27 +1,30 @@
-﻿@model AnalyticReportApp.RazorModels.GetCarsRazorModel
+﻿@model ArturBhasker.AnalitycReportBeeLine.RazorModels.GetCarsRazorModel.GetCarsRazorModel
 
-  <head>
-    <title>Бренд : @Model.Brand</title>
-    <p>Количество машин: @Model.CarHeaderRazorModel.CarsCount</p>
-    <p>оличество машин данного бренда: @Model.CarHeaderRazorModel.BrandCarsCount</p>
-    <p>Средний расход топлива: @Model.CarHeaderRazorModel.FuelAverage</p>
-    <p>Средний расход данного бренда: @Model.CarHeaderRazorModel.BrandFuelAverage</p>
-  </head>
+<head>
+	<title>Бренд : @Model.Brand</title>
+</head>
+
+
+<p>Количество машин: @Model.CarHeaderRazorModel.CarsCount</p>
+<p>оличество машин данного бренда: @Model.CarHeaderRazorModel.BrandCarsCount</p>
+<p>Средний расход топлива: @Model.CarHeaderRazorModel.FuelAverage</p>
+<p>Средний расход данного бренда: @Model.CarHeaderRazorModel.BrandFuelAverage</p>
 
 <table class="arrowes-table table-striped">
-@foreach (var item in Model.CarRazorModels)
-{
-        <tr>
-            <td>
-                @item.Brand
-            </td>
-            <td>
-                @item.Model
-            </td>
-            <td>
-                <img src="data:image;base64,@item.Image" />
-            </td>
-        </tr>
-}
-    </tbody>
+	<tbody>
+	@foreach (var item in Model.CarRazorModels)
+	{
+		<tr>
+			<td>
+				@item.Brand
+			</td>
+			<td>
+				@item.Model
+			</td>
+			<td>
+				<img src="data:image;base64,@item.Image"/>
+			</td>
+		</tr>
+	}
+	</tbody>
 </table>
