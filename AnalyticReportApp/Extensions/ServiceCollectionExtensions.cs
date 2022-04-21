@@ -1,4 +1,5 @@
-﻿using ArturBhasker.Infrastructure.UnitTests.Extensions;
+﻿using ArturBhasker.AnalitycReportBeeLine.Converters;
+using ArturBhasker.Infrastructure.UnitTests.Extensions;
 
 namespace ArturBhasker.AnalitycReportBeeLine.Extensions
 {
@@ -17,6 +18,8 @@ namespace ArturBhasker.AnalitycReportBeeLine.Extensions
 
             builder.Services.AddControllers();
             builder.Services.AddMvc();
+
+            builder.Services.AddScoped<IApiConverter, ApiConverter>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

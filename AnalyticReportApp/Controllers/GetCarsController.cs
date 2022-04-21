@@ -1,3 +1,4 @@
+using ArturBhasker.AnalitycReportBeeLine.Converters;
 using ArturBhasker.AnalitycReportBeeLine.RazorModels.GetCarsRazorModel;
 using ArturBhasker.Infrastructure.UnitTests.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +11,16 @@ namespace ArturBhasker.AnalitycReportBeeLine.Controllers
     {
         private readonly ILogger<GetCarsController> _logger;
         private readonly IC1NWindRepository _repository;
+        private readonly IApiConverter _apiConverter;
 
         public GetCarsController(
             ILogger<GetCarsController> logger,
-            IC1NWindRepository repository)
+            IC1NWindRepository repository,
+            IApiConverter apiConverter)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _apiConverter = apiConverter ?? throw new ArgumentNullException(nameof(apiConverter));
         }
 
         /// <summary>
@@ -27,45 +31,13 @@ namespace ArturBhasker.AnalitycReportBeeLine.Controllers
             [FromQuery] string brand,
             CancellationToken cancellationToken)
         {
-            var u = this.ControllerContext;
+            var command = _apiConverter
+                .GetCarsCommand(
+                    brand: brand,
+                    repository: _repository
+                    );
 
-            var brandCars = await _repository.GetCarsAsync(
-                brand: brand,
-                cancellationToken: cancellationToken
-            );
-
-            var fuelAverage = await _repository.GetAverageFuelAsync(cancellationToken);
-            var carsCount = await _repository.GetCarsCountAsync(cancellationToken);
-
-
-            var carRazorModels = brandCars
-                .Select(
-                    car =>
-                    {
-                        return new CarRazorModel(
-                            brand: car.Brand ?? throw new ArgumentNullException(nameof(car.Brand)),
-                            model: car.Model ?? throw new ArgumentNullException(nameof(car.Model)),
-                            image: car.Picture ?? throw new ArgumentNullException(nameof(car.Picture))
-                        );
-                    });
-
-            var fuelAverageBrand = brandCars
-                .Average(brandCar => brandCar.Liter);
-
-            var carsCountBrand = brandCars
-                .Count();
-
-            var carHeaderRazorModel = new CarHeaderRazorModel(
-                brandCarsCount: carsCountBrand,
-                brandFuelAverage: fuelAverageBrand,
-                fuelAverage: fuelAverage,
-                carsCount: carsCount
-            );
-
-            var razorModel = new GetCarsRazorModel(
-                carRazorModels: carRazorModels,
-                carHeaderRazorModel: carHeaderRazorModel,
-                brand: brand);
+            var razorModel = await command.ExecuteAsync(cancellationToken);
 
 
             return View(razorModel);
